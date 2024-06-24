@@ -8,10 +8,18 @@ class Controller:
         # the model, which implements the logic of the program and holds the data
         self._model = model
 
-    def handle_hello(self, e):
-        name = self._view.txt_name.value
-        if name is None or name == "":
-            self._view.create_alert("Inserire il nome")
+    def handle_grafo(self, e):
+        numeroMinimo=self._view.txt_goal.value
+        if numeroMinimo=="":
+            self._view.create_alert("Inserisci un numero minimo di goal fatti")
             return
-        self._view.txt_result.controls.append(ft.Text(f"Hello, {name}!"))
+        grafo = self._model.creaGrafo(float(numeroMinimo))
+        self._view.txt_result.controls.append(ft.Text("Grafo correttamente creato."))
+        self._view.txt_result.controls.append(ft.Text(f"Il grafo contiene "
+                                                      f"{self._model.getNumNodes()} nodi."))
+        self._view.txt_result.controls.append(ft.Text(f"Il grafo contiene "
+                                                      f"{self._model.getNumEdges()} archi."))
         self._view.update_page()
+
+    def handle_top(self, e):
+        pass
