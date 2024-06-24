@@ -22,4 +22,10 @@ class Controller:
         self._view.update_page()
 
     def handle_top(self, e):
-        pass
+        giocatore,avversari=self._model.getTop()
+        self._view.txt_result.controls.append(ft.Text(f"TOP PLAYER: {giocatore}."))
+        self._view.txt_result.controls.append(ft.Text("AVVERSARI BATTUTI:"))
+        for (giocatore, peso) in avversari:
+            self._view.txt_result.controls.append(ft.Text(f"{giocatore} | {peso}"))
+        self._view.update_page()
+
