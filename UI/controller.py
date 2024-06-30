@@ -28,4 +28,15 @@ class Controller:
         for (giocatore, peso) in avversari:
             self._view.txt_result.controls.append(ft.Text(f"{giocatore} | {peso}"))
         self._view.update_page()
+    def handle_dream(self,e):
+        ngiocatori = self._view.txt_giocatori.value
+        if ngiocatori == "":
+            self._view.create_alert("Inserire un numero di giocatori")
+            return
+        costo, listaNodi = self._model.getBestPath( int(ngiocatori))
+        self._view.txt_result.controls.append(ft.Text(f"La soluzione migliore ha grado di titolarità pari a {costo}"))
+        for nodo in listaNodi:
+            self._view.txt_result.controls.append(ft.Text(f"{nodo}"))
+        self._view.update_page()
+
 

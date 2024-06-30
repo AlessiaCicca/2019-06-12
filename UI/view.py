@@ -30,6 +30,8 @@ class View(ft.UserControl):
             width=200,
 
         )
+        self.txt_giocatori=ft.TextField(label="#Giocatori")
+        self.btn_dream = ft.ElevatedButton(text="Dream Team", on_click=self._controller.handle_dream)
         self.btn_grafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
         self.btn_top = ft.ElevatedButton(text="Top Player", on_click=self._controller.handle_top)
         # button for the "hello" reply
@@ -37,6 +39,9 @@ class View(ft.UserControl):
         row1 = ft.Row([self.txt_goal,self.btn_grafo, self.btn_top],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+        row2 = ft.Row([self.txt_giocatori,self.btn_dream],
+                      alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row2)
 
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
